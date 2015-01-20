@@ -12,6 +12,6 @@ class SkinLivingStyleGuide extends SkinTemplate {
 
 	public function setupSkinUserCss( OutputPage $out ) {
 		parent::setupSkinUserCss( $out );
-		$out->addModuleStyles( array( 'skin.styleguide', 'ext.bootstrap' ) );
+		$out->addModuleStyles( array( 'skin.styleguide', 'ext.bootstrap', 'skin.styleguide.template' ) );
 	}
 }
