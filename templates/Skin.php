@@ -198,6 +198,15 @@
 '.$cx['funcs']['sec']($cx, $cx['funcs']['v']($cx, $in, array('sidebar','navigation')), $in, true, function($cx, $in) {return '		<li id="'.htmlentities((string)$cx['funcs']['v']($cx, $in, array('id')), ENT_QUOTES, 'UTF-8').'">
 			<a href="'.htmlentities((string)$cx['funcs']['v']($cx, $in, array('href')), ENT_QUOTES, 'UTF-8').'">'.htmlentities((string)$cx['funcs']['v']($cx, $in, array('text')), ENT_QUOTES, 'UTF-8').'</a>
 		</li>
+';}).'	</ul>
+	<h3>
+		<span class="glyphicon glyphicon-user"></span>
+'.(($cx['funcs']['ifvar']($cx, $cx['funcs']['v']($cx, $in, array('loggedin')))) ? '			Logged in
+		' : '
+			Not logged in
+').'	</h3>
+	<ul>
+'.$cx['funcs']['sec']($cx, $cx['funcs']['v']($cx, $in, array('personal_urls')), $in, true, function($cx, $in) {return '		<li><a href="'.htmlentities((string)$cx['funcs']['v']($cx, $in, array('href')), ENT_QUOTES, 'UTF-8').'" class="'.htmlentities((string)$cx['funcs']['v']($cx, $in, array('class')), ENT_QUOTES, 'UTF-8').'">'.htmlentities((string)$cx['funcs']['v']($cx, $in, array('text')), ENT_QUOTES, 'UTF-8').'</a></li>
 ';}).'	</ul>'.'	</div>
 
 	<div id="site-wrap">
@@ -230,6 +239,16 @@
 		<div class="container">
 			<h1 class="firstHeading" id="firstHeading">
 				<span dir="auto">'.$cx['funcs']['v']($cx, $in, array('title')).'</span>
+				<span class="content-actions">
+'.$cx['funcs']['sec']($cx, $cx['funcs']['v']($cx, $in, array('content_navigation','views')), $in, true, function($cx, $in) {return '						<a
+							href="'.htmlentities((string)$cx['funcs']['v']($cx, $in, array('href')), ENT_QUOTES, 'UTF-8').'"
+							class="'.htmlentities((string)$cx['funcs']['v']($cx, $in, array('class')), ENT_QUOTES, 'UTF-8').'"
+							'.(($cx['funcs']['ifvar']($cx, $cx['funcs']['v']($cx, $in, array('rel')))) ? 'rel="'.htmlentities((string)$cx['funcs']['v']($cx, $in, array('rel')), ENT_QUOTES, 'UTF-8').'"' : '').'
+							'.(($cx['funcs']['ifvar']($cx, $cx['funcs']['v']($cx, $in, array('id')))) ? 'id="'.htmlentities((string)$cx['funcs']['v']($cx, $in, array('id')), ENT_QUOTES, 'UTF-8').'"' : '').'
+						>
+							'.htmlentities((string)$cx['funcs']['v']($cx, $in, array('text')), ENT_QUOTES, 'UTF-8').'
+						</a>
+';}).'				</span>
 			</h1>
 '.(($cx['funcs']['ifvar']($cx, $cx['funcs']['v']($cx, $in, array('isarticle')))) ? '				<div id="siteSub">'.$cx['funcs']['ch']($cx, 'msg', array(array('tagline'),array()), 'enc').'</div>
 ' : '').'			<div id="contentSub" '.$cx['funcs']['v']($cx, $in, array('userlangattributes')).'>

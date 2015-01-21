@@ -6,3 +6,16 @@
 	</li>
 {{/each}}
 </ul>
+<h3>
+	<span class="glyphicon glyphicon-user"></span>
+	{{#if loggedin}}
+		Logged in
+	{{else}}
+		Not logged in
+	{{/if}}
+</h3>
+<ul>
+{{#each personal_urls}}
+	<li><a href="{{href}}" class="{{class}}">{{text}}</a></li>
+{{/each}}
+</ul>
