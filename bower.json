@@ -17,6 +17,6 @@
   ],
   "dependencies": {
     "bootstrap": "~3.3.1",
-    "living-styleguide-template" : "prtksxna/living-styleguide-template#v0.0.1"
+    "living-styleguide-template" : "prtksxna/living-styleguide-template#v0.0.2"
   }
 }
