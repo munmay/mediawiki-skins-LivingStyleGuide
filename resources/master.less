@@ -1,0 +1,155 @@
+/* Typography */
+body {
+	color: #333;
+	font-size: 16px;
+}
+
+h1 {
+	font: 2em 'Geogia', 'Times', serif;
+	padding-bottom: 0.3em;
+	border-bottom: 1px solid #ddd;
+}
+
+h2 {
+	font: 1.5em 'Helvetica', 'Arial', sans-serif;
+	font-weight: bold;
+	margin-bottom: 0.5em;
+}
+
+h3 {
+	margin-top: 0;
+	font: 1.2em 'Helvetica', 'Arial', sans-serif;
+	font-weight: bold;
+}
+
+p {
+	font: 0.8em 'Helvetica', 'Arial', sans-serif;
+}
+
+.example_container {
+	margin: 2em 0;
+	padding: 1em;
+	background: #f9f9f9;
+}
+/* Typography */
+
+html, body {
+	height: 100%;
+}
+
+/* Offscreen Navigation */
+#site-wrap {
+	min-width: 100%;
+	min-height: 100%;
+	background-color: #fff;
+	position: relative;
+	top: 0;
+	bottom: 100%;
+	left: 0;
+	z-index: 1;
+	transition: left 0.2s;
+}
+
+
+.site-shift {
+	left: 200px !important;
+	box-shadow: 0 0 20px 5px rgba(0,0,0,0.2);
+
+	.navbar {
+		left: 200px !important;
+	}
+}
+
+#off-navigation {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 0;
+	background-color: #f9f9f9;
+	color: #333;
+
+	ul {
+		list-style: none;
+		padding: 10px 20px;
+
+		li {
+			padding: 10px 0;
+
+			a {
+				color: #333;
+			}
+		}
+	}
+}
+/* Offscreen Navigation */
+
+/* Navbar */
+.navbar {
+	border: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1;
+	background-color: inherit;
+	width: 100%;
+	height: 50px;
+	transition: left 0.2s;
+
+	.search-input {
+		background: transparent;
+		border: none;
+		color: #333;
+		box-shadow: none;
+		width: 300px;
+		background-image: url( 'search.svg' );
+		background-position: center left;
+		background-repeat: no-repeat;
+		padding-left: 30px;
+
+		&:focus {
+			background-image: url( 'search_active.svg' );
+			background-position: center left;
+			background-repeat: no-repeat;
+			outline: none;
+			box-shadow: none;
+		}
+	}
+
+	.navbar-header {
+		background: #f9f9f9;
+		background-image: url( 'menu.svg' );
+		background-position: center left -10px;
+		background-repeat: no-repeat;
+
+		a {
+			color: #333;
+			text-transform: uppercase;
+			font-weight: bold;
+		}
+	}
+}
+/* Navbar */
+
+.container {
+	// Don't hide under the navbar.
+	margin-top: 50px;
+}
+
+/* MediaWiki Stuff */
+@media screen {
+	#contentSub, #siteSub {
+		display: none;
+	}
+}
+
+.content-actions {
+	font-size: 0.5em;
+
+	a {
+		margin-left: 0.75em;
+	}
+}

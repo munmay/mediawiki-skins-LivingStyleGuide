@@ -49,20 +49,13 @@ $wgResourceModules += array(
 		'scripts' => 'js/bootstrap.min.js',
 		'styles' => 'css/bootstrap.min.css',
 	),
-	'skin.styleguide.template' => array(
-		'localBasePath' => __DIR__ . "/bower_components/living-styleguide-template/resources",
-		'remoteSkinPath' => 'LivingStyleGuide/bower_components/living-styleguide-template/resources',
+	'skin.styleguide' => array(
+		'localBasePath' => __DIR__ . "/resources",
+		'remoteSkinPath' => 'LivingStyleGuide/resources',
 		'group' => 'ext.lightncandyskin',
 		'styles' => 'master.less',
 		'scripts' => 'menu.js',
-		'dependencies' => 'ext.bootstrap',
-	),
-	'skin.styleguide' => array(
-		'localBasePath' => __DIR__ . "/resources",
-		'remoteSkinPath' => 'LivingStyleGuideSkin/resources',
-		'group' => 'ext.lightncandyskin',
-		'styles' => 'skin.less',
-		'dependencies' => array( 'skin.styleguide.template' ),
+		'dependencies' => 'ext.bootstrap'
 	),
 );
 
