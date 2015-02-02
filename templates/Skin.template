@@ -33,7 +33,7 @@
 
 		<div class="container">
 			<h1 class="firstHeading" id="firstHeading">
-				<span dir="auto">{{{title}}}</span>
+				{{{title}}}
 				<span class="content-actions">
 					{{#each content_navigation.views}}
 						<a

@@ -245,7 +245,7 @@
 
 		<div class="container">
 			<h1 class="firstHeading" id="firstHeading">
-				<span dir="auto">'.$cx['funcs']['v']($cx, $in, array('title')).'</span>
+				'.$cx['funcs']['v']($cx, $in, array('title')).'
 				<span class="content-actions">
 '.$cx['funcs']['sec']($cx, $cx['funcs']['v']($cx, $in, array('content_navigation','views')), $in, true, function($cx, $in) {return '						<a
 							href="'.htmlentities((string)$cx['funcs']['v']($cx, $in, array('href')), ENT_QUOTES, 'UTF-8').'"
