@@ -31,10 +31,10 @@
 			</div>
 		</nav>
 
-		<div class="container">
+		<div class="container" id="content">
 			<h1 class="firstHeading" id="firstHeading">
 				{{{title}}}
-				<span class="content-actions">
+				<span class="content-actions" id="p-cactions">
 					{{#each content_navigation.views}}
 						<a
 							href="{{href}}"

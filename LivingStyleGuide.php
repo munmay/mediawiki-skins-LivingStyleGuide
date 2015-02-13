@@ -41,22 +41,28 @@ $wgExtensionCredits['skin'][] = array(
 	),
 );
 
+$styleguideSkinResourceTemplate = array(
+	'localBasePath' => __DIR__ . "/resources",
+	'remoteSkinPath' => 'LivingStyleGuide/resources',
+	'group' => 'skin.livingstyleguide',
+);
+
 $wgResourceModules += array(
 	'ext.bootstrap' => array(
 		'localBasePath' => __DIR__ . "/bower_components/bootstrap/dist",
 		'remoteSkinPath' => 'LivingStyleGuide/bower_components/bootstrap/dist',
-		'group' => 'ext.lightncandyskin',
+		'group' => 'skin.livingstyleguide',
 		'scripts' => 'js/bootstrap.min.js',
 		'styles' => 'css/bootstrap.min.css',
 	),
-	'skin.styleguide' => array(
-		'localBasePath' => __DIR__ . "/resources",
-		'remoteSkinPath' => 'LivingStyleGuide/resources',
-		'group' => 'ext.lightncandyskin',
+	'skin.styleguide.styles' => array(
 		'styles' => 'master.less',
+		'position' => 'top',
+	) + $styleguideSkinResourceTemplate,
+	'skin.styleguide' => array(
 		'scripts' => 'menu.js',
 		'dependencies' => 'ext.bootstrap'
-	),
+	) + $styleguideSkinResourceTemplate,
 );
 
 require_once __DIR__."/autoload.php";

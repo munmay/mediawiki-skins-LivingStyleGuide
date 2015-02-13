@@ -204,7 +204,6 @@
 				</li>
 ';}).'		</ul>
 	</div>
-	
 	<div class="dropdown">
 		<button class="btn btn-default dropdown-toggle" type="button" id="account" data-toggle="dropdown" aria-expanded="true">
 			<span class="glyphicon glyphicon-user"></span>
@@ -243,10 +242,10 @@
 			</div>
 		</nav>
 
-		<div class="container">
+		<div class="container" id="content">
 			<h1 class="firstHeading" id="firstHeading">
 				'.$cx['funcs']['v']($cx, $in, array('title')).'
-				<span class="content-actions">
+				<span class="content-actions" id="p-cactions">
 '.$cx['funcs']['sec']($cx, $cx['funcs']['v']($cx, $in, array('content_navigation','views')), $in, true, function($cx, $in) {return '						<a
 							href="'.htmlentities((string)$cx['funcs']['v']($cx, $in, array('href')), ENT_QUOTES, 'UTF-8').'"
 							class="'.htmlentities((string)$cx['funcs']['v']($cx, $in, array('class')), ENT_QUOTES, 'UTF-8').'"
