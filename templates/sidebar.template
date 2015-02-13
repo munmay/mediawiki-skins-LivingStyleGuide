@@ -1,17 +1,4 @@
 <div class="dropdown">
-	<button class="btn btn-default dropdown-toggle" type="button" id="navigation" data-toggle="dropdown" aria-expanded="true">
-		<span class="glyphicon glyphicon-th"></span>
-		<span class="caret"></span>
-	</button>
-	<ul class="dropdown-menu" role="menu" aria-labelledby="navigation">
-		{{#each sidebar.navigation}}
-			<li id="{{id}}">
-				<a href="{{href}}">{{text}}</a>
-			</li>
-		{{/each}}
-	</ul>
-</div>
-<div class="dropdown">
 	<button class="btn btn-default dropdown-toggle" type="button" id="account" data-toggle="dropdown" aria-expanded="true">
 		<span class="glyphicon glyphicon-user"></span>
 		<span class="caret"></span>
@@ -22,3 +9,11 @@
 		{{/each}}
 	</ul>
 </div>
+<h2 id="navigation-header">Navigation</h2>
+<ul aria-labelledby="navigation-header">
+	{{#each sidebar.navigation}}
+		<li id="{{id}}">
+			<a href="{{href}}">{{text}}</a>
+		</li>
+	{{/each}}
+</ul>

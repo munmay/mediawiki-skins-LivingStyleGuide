@@ -3,11 +3,10 @@
         'flags' => array(
             'jstrue' => false,
             'jsobj' => false,
-            'spvar' => false,
+            'spvar' => true,
             'prop' => false,
             'method' => false,
             'mustlok' => true,
-            'mustsec' => true,
             'echo' => false,
             'debug' => $debugopt,
         ),
@@ -28,7 +27,7 @@
         'blockhelpers' => array(),
         'hbhelpers' => array(),
         'partials' => array(),
-        'scopes' => array($in),
+        'scopes' => array(),
         'sp_vars' => array('root' => $in),
 'funcs' => array(
     'v' => function ($cx, $base, $path) {
@@ -60,10 +59,14 @@
                 return $v;
             }
             $count--;
-            if ($count >= 0) {
-                $base = $cx['scopes'][$count];
-            } else {
-                return null;
+            switch ($count) {
+                case -1:
+                    $base = $cx['sp_vars']['root'];
+                    break;
+                case -2;
+                    return null;
+                default:
+                    $base = $cx['scopes'][$count];
             }
         }
     },
@@ -76,7 +79,10 @@
         $isObj = false;
 
         if ($isAry && $else !== null && count($v) === 0) {
-            return $else($cx, $in);
+            $cx['scopes'][] = $in;
+            $ret = $else($cx, $in);
+            array_pop($cx['scopes']);
+            return $ret;
         }
 
         // #var, detect input type is object or not
@@ -140,13 +146,9 @@
             return '';
         }
         if ($isAry) {
-            if ($cx['flags']['mustsec']) {
-                $cx['scopes'][] = $v;
-            }
+            $cx['scopes'][] = $in;
             $ret = $cb($cx, $v);
-            if ($cx['flags']['mustsec']) {
-                array_pop($cx['scopes']);
-            }
+            array_pop($cx['scopes']);
             return $ret;
         }
 
@@ -159,13 +161,16 @@
         }
 
         if ($else !== null) {
-            return $else($cx, $in);
+            $cx['scopes'][] = $in;
+            $ret = $else($cx, $in);
+            array_pop($cx['scopes']);
+            return $ret;
         }
 
         return '';
     },
     'ifvar' => function ($cx, $v) {
-        return !is_null($v) && ($v !== false) && ($v !== 0) && ($v !== '') && (is_array($v) ? (count($v) > 0) : true);
+        return !is_null($v) && ($v !== false) && ($v !== 0) && ($v !== 0.0) && ($v !== '') && (is_array($v) ? (count($v) > 0) : true);
     },
     'ch' => function ($cx, $ch, $vars, $op) {
         return $cx['funcs']['chret'](call_user_func_array($cx['helpers'][$ch], $vars), $op);
@@ -194,17 +199,6 @@
 
 <div id="off-navigation">
 '.'	<div class="dropdown">
-		<button class="btn btn-default dropdown-toggle" type="button" id="navigation" data-toggle="dropdown" aria-expanded="true">
-			<span class="glyphicon glyphicon-th"></span>
-			<span class="caret"></span>
-		</button>
-		<ul class="dropdown-menu" role="menu" aria-labelledby="navigation">
-'.$cx['funcs']['sec']($cx, $cx['funcs']['v']($cx, $in, array('sidebar','navigation')), $in, true, function($cx, $in) {return '				<li id="'.htmlentities((string)$cx['funcs']['v']($cx, $in, array('id')), ENT_QUOTES, 'UTF-8').'">
-					<a href="'.htmlentities((string)$cx['funcs']['v']($cx, $in, array('href')), ENT_QUOTES, 'UTF-8').'">'.htmlentities((string)$cx['funcs']['v']($cx, $in, array('text')), ENT_QUOTES, 'UTF-8').'</a>
-				</li>
-';}).'		</ul>
-	</div>
-	<div class="dropdown">
 		<button class="btn btn-default dropdown-toggle" type="button" id="account" data-toggle="dropdown" aria-expanded="true">
 			<span class="glyphicon glyphicon-user"></span>
 			<span class="caret"></span>
@@ -213,6 +207,12 @@
 '.$cx['funcs']['sec']($cx, $cx['funcs']['v']($cx, $in, array('personal_urls')), $in, true, function($cx, $in) {return '				<li><a href="'.htmlentities((string)$cx['funcs']['v']($cx, $in, array('href')), ENT_QUOTES, 'UTF-8').'" class="'.htmlentities((string)$cx['funcs']['v']($cx, $in, array('class')), ENT_QUOTES, 'UTF-8').'">'.htmlentities((string)$cx['funcs']['v']($cx, $in, array('text')), ENT_QUOTES, 'UTF-8').'</a></li>
 ';}).'		</ul>
 	</div>
+	<h2 id="navigation-header">Navigation</h2>
+	<ul aria-labelledby="navigation-header">
+'.$cx['funcs']['sec']($cx, $cx['funcs']['v']($cx, $in, array('sidebar','navigation')), $in, true, function($cx, $in) {return '			<li id="'.htmlentities((string)$cx['funcs']['v']($cx, $in, array('id')), ENT_QUOTES, 'UTF-8').'">
+				<a href="'.htmlentities((string)$cx['funcs']['v']($cx, $in, array('href')), ENT_QUOTES, 'UTF-8').'">'.htmlentities((string)$cx['funcs']['v']($cx, $in, array('text')), ENT_QUOTES, 'UTF-8').'</a>
+			</li>
+';}).'	</ul>
 '.'	</div>
 
 	<div id="site-wrap">
